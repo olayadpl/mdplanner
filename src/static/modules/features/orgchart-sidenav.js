@@ -175,11 +175,10 @@ export class OrgChartSidenavModule extends BaseSidenavModule {
   async save() {
     const data = this.getFormData();
 
-    if (!data.name) { this.showSaveStatus("Name required"); return; }
-    if (!data.title) { this.showSaveStatus("Title required"); return; }
-    if (!data.departments || data.departments.length === 0) {
-      this.showSaveStatus("At least one department required");
-      return;
+    // Only name is required for team members
+    if (!data.name) { 
+      this.showSaveStatus("Name required"); 
+      return; 
     }
 
     try {

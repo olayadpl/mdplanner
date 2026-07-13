@@ -1,9 +1,59 @@
-.DS_Store
-backups/*.md
-.mdplanner_active
+```
+# Dependencies
+node_modules/
+
+# Build outputs
 dist/
-mdplanner
-*.mdplanner.db
-*.mdplanner.db-shm
-*.mdplanner.db-wal
-docker-compose.override.yml
+build/
+target/
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# TypeScript/JavaScript
+*.tsbuildinfo
+*.bak
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+```
