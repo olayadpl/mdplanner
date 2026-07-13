@@ -7,7 +7,7 @@ import { FuzzyAutocomplete } from "../ui/fuzzy-autocomplete.js";
 import { showToast } from "../ui/toast.js";
 import { UndoManager } from "../ui/undo-manager.js";
 import { showConfirm } from "../ui/confirm.js";
-import { markdownToHtml, escapeHtml, extractErrorMessage, validateRequired, clearAllFieldErrors } from "../utils.js";
+import { markdownToHtml, escapeHtml, extractErrorMessage, validateRequired, clearAllFieldErrors, showFieldError } from "../utils.js";
 
 export class TaskSidenavModule {
   constructor(taskManager) {
@@ -482,12 +482,13 @@ export class TaskSidenavModule {
   async handleSubmit() {
     // Clear previous errors
     clearAllFieldErrors(document.getElementById("sidenavTask"));
-    // Validate required fields
-    const errors = validateRequired([
-      { id: "sidenavTaskTitleInput", label: "Title" },
-    ]);
-    if (errors.length > 0) {
-      showToast(errors[0].message, "error");
+    // Validate required fields - only title is required
+    const titleEl = document.getElementById("sidenavTaskTitleInput");
+    const titleValue = titleEl?.value?.trim() ?? "";
+    
+    if (!titleValue) {
+      showToast("Title is required", "error");
+      showFieldError("sidenavTaskTitleInput", "Title is required");
       return;
     }
 
